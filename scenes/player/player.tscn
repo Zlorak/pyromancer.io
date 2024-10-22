@@ -1,0 +1,402 @@
+[gd_scene load_steps=42 format=3 uid="uid://3qsm8iiqj5mh"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_m1qay"]
+[ext_resource type="Texture2D" uid="uid://b7r5akcoxafuj" path="res://assets/pyromancer/DEATH.png" id="1_w2v83"]
+[ext_resource type="Script" path="res://scenes/player/aura.gd" id="2_ocqvr"]
+[ext_resource type="Texture2D" uid="uid://bxxlo1r45ojn4" path="res://assets/pyromancer/HURT.png" id="2_quflv"]
+[ext_resource type="Texture2D" uid="uid://f3mp1av70kxj" path="res://assets/pyromancer/IDLE.png" id="3_fcbip"]
+[ext_resource type="PackedScene" uid="uid://cpqjbkrko44r6" path="res://scenes/powers/fireball.tscn" id="3_x36gn"]
+[ext_resource type="Texture2D" uid="uid://jvelulbp3g07" path="res://assets/pyromancer/WALK.png" id="4_m3nfh"]
+[ext_resource type="Script" path="res://scenes/player/player_movement.gd" id="6_1eqkx"]
+[ext_resource type="Texture2D" uid="uid://cgg3peydpp6b0" path="res://assets/shadow.png" id="7_lpykr"]
+[ext_resource type="PackedScene" uid="uid://dpv3gtb8881fw" path="res://scenes/player/monsters_label.tscn" id="9_6ynxl"]
+[ext_resource type="PackedScene" uid="uid://70i2m5qtw3mk" path="res://scenes/player/level_up_prompt.tscn" id="9_po6jx"]
+[ext_resource type="Theme" uid="uid://cvf8in1mkgotd" path="res://resources/ui/basic_theme.tres" id="10_ixncq"]
+[ext_resource type="Script" path="res://scenes/player/player_ui.gd" id="10_qm5wg"]
+[ext_resource type="Script" path="res://scenes/player/timer_label.gd" id="12_emdm0"]
+[ext_resource type="Texture2D" uid="uid://cbvkling7ep46" path="res://assets/ui/game_over.png" id="15_3j45e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s3ka4"]
+radius = 13.0
+height = 46.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apt0c"]
+atlas = ExtResource("1_w2v83")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sscb"]
+atlas = ExtResource("1_w2v83")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6omuh"]
+atlas = ExtResource("1_w2v83")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idcnp"]
+atlas = ExtResource("1_w2v83")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqr3r"]
+atlas = ExtResource("1_w2v83")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ko1aa"]
+atlas = ExtResource("1_w2v83")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1v0ko"]
+atlas = ExtResource("1_w2v83")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cq6p1"]
+atlas = ExtResource("1_w2v83")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5dgf"]
+atlas = ExtResource("1_w2v83")
+region = Rect2(800, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52mna"]
+atlas = ExtResource("1_w2v83")
+region = Rect2(900, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0n7b2"]
+atlas = ExtResource("2_quflv")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyfc4"]
+atlas = ExtResource("2_quflv")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsa38"]
+atlas = ExtResource("2_quflv")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3j3v"]
+atlas = ExtResource("3_fcbip")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a80en"]
+atlas = ExtResource("3_fcbip")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mh43q"]
+atlas = ExtResource("3_fcbip")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s80n1"]
+atlas = ExtResource("3_fcbip")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebni6"]
+atlas = ExtResource("4_m3nfh")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hw3eh"]
+atlas = ExtResource("4_m3nfh")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3w3x"]
+atlas = ExtResource("4_m3nfh")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30rv7"]
+atlas = ExtResource("4_m3nfh")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lplq"]
+atlas = ExtResource("4_m3nfh")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_586gg"]
+atlas = ExtResource("4_m3nfh")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qc6ko"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apt0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3sscb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6omuh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idcnp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqr3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ko1aa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1v0ko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cq6p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5dgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52mna")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0n7b2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yyfc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsa38")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3j3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a80en")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mh43q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s80n1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebni6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hw3eh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3w3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30rv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lplq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_586gg")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h2i4a"]
+radius = 750.0
+
+[node name="Player" type="Node2D" node_paths=PackedStringArray("body_node", "sprite_node", "ui_node", "game_over_title", "monsters_label_node", "level_prompt_node", "aura_node")]
+process_mode = 3
+script = ExtResource("1_m1qay")
+required_exp = 100
+max_hp = 100
+upgrade_increment = 50
+body_node = NodePath("CharacterBody2D")
+sprite_node = NodePath("CharacterBody2D/AnimatedSprite2D")
+ui_node = NodePath("CharacterBody2D/AnimatedSprite2D/UI")
+game_over_title = NodePath("CharacterBody2D/AnimatedSprite2D/UI/GameOverTitle")
+monsters_label_node = NodePath("CharacterBody2D/AnimatedSprite2D/UI/MonstersLabel")
+level_prompt_node = NodePath("CharacterBody2D/AnimatedSprite2D/UI/LevelUpPrompt")
+aura_node = NodePath("CharacterBody2D/AnimatedSprite2D/Aura")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("animated_node") groups=["player"]]
+process_mode = 1
+motion_mode = 1
+script = ExtResource("6_1eqkx")
+animated_node = NodePath("AnimatedSprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, 11)
+shape = SubResource("CapsuleShape2D_s3ka4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+process_mode = 1
+sprite_frames = SubResource("SpriteFrames_qc6ko")
+animation = &"death"
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/AnimatedSprite2D"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.627451)
+show_behind_parent = true
+position = Vector2(1, 27)
+texture = ExtResource("7_lpykr")
+
+[node name="Aura" type="Node2D" parent="CharacterBody2D/AnimatedSprite2D"]
+position = Vector2(0, 12)
+script = ExtResource("2_ocqvr")
+aura_radius = 75.0
+aura_increment = 5
+max_projectile_scale = Vector2(1, 1)
+fireball_scene = ExtResource("3_x36gn")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D/AnimatedSprite2D"]
+position_smoothing_speed = 20.0
+
+[node name="PlayerAggro" type="Area2D" parent="CharacterBody2D/AnimatedSprite2D" groups=["player_aggro"]]
+visible = false
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/AnimatedSprite2D/PlayerAggro"]
+shape = SubResource("CircleShape2D_h2i4a")
+
+[node name="UI" type="Control" parent="CharacterBody2D/AnimatedSprite2D" node_paths=PackedStringArray("health_label", "experience_label")]
+process_mode = 3
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+theme = ExtResource("10_ixncq")
+script = ExtResource("10_qm5wg")
+health_label = NodePath("HBoxContainer/HealthLabel")
+experience_label = NodePath("HBoxContainer/ExperienceLabel")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CharacterBody2D/AnimatedSprite2D/UI"]
+custom_minimum_size = Vector2(400, 25)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -195.0
+offset_right = 195.0
+offset_bottom = 40.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="HealthLabel" type="Label" parent="CharacterBody2D/AnimatedSprite2D/UI/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_direction = 2
+layout_mode = 2
+text = "Health:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExperienceLabel" type="Label" parent="CharacterBody2D/AnimatedSprite2D/UI/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_direction = 3
+layout_mode = 2
+text = "Experience:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimerLabel" type="Label" parent="CharacterBody2D/AnimatedSprite2D/UI"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -315.0
+offset_right = 79.0
+offset_bottom = -282.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Survived 0:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("12_emdm0")
+
+[node name="Timer" type="Timer" parent="CharacterBody2D/AnimatedSprite2D/UI/TimerLabel"]
+autostart = true
+
+[node name="MonstersLabel" parent="CharacterBody2D/AnimatedSprite2D/UI" instance=ExtResource("9_6ynxl")]
+layout_mode = 1
+
+[node name="LevelUpPrompt" parent="CharacterBody2D/AnimatedSprite2D/UI" instance=ExtResource("9_po6jx")]
+visible = false
+layout_mode = 1
+
+[node name="GameOverTitle" type="Control" parent="CharacterBody2D/AnimatedSprite2D/UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CharacterBody2D/AnimatedSprite2D/UI/GameOverTitle"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -479.5
+offset_top = -138.5
+offset_right = 479.5
+offset_bottom = 138.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_3j45e")
+
+[node name="RetryButton" type="Button" parent="CharacterBody2D/AnimatedSprite2D/UI/GameOverTitle"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = 80.0
+offset_right = 38.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Retry"
+
+[node name="QuitGameButton" type="Button" parent="CharacterBody2D/AnimatedSprite2D/UI/GameOverTitle"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = 130.0
+offset_right = 38.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[connection signal="add_projectile" from="CharacterBody2D" to="CharacterBody2D/AnimatedSprite2D/Aura" method="_on_character_body_2d_add_projectile"]
+[connection signal="dead" from="CharacterBody2D" to="." method="_on_character_body_2d_dead"]
+[connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="CharacterBody2D/AnimatedSprite2D/UI/TimerLabel/Timer" to="CharacterBody2D/AnimatedSprite2D/UI/TimerLabel" method="_on_timer_timeout"]
+[connection signal="upgrade" from="CharacterBody2D/AnimatedSprite2D/UI/LevelUpPrompt" to="." method="_on_level_up_prompt_upgrade"]
+[connection signal="pressed" from="CharacterBody2D/AnimatedSprite2D/UI/GameOverTitle/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="CharacterBody2D/AnimatedSprite2D/UI/GameOverTitle/QuitGameButton" to="." method="_on_quit_game_button_pressed"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://crqhngmfo7fj1"
+path="res://.godot/imported/HeavyElectronic Vol2 Apollos Twin Main.wav-da288597962a3b23e19246d723f8be51.sample"
+
+[deps]
+
+source_file="res://assets/audio/music/HeavyElectronic Vol2 Apollos Twin Main.wav"
+dest_files=["res://.godot/imported/HeavyElectronic Vol2 Apollos Twin Main.wav-da288597962a3b23e19246d723f8be51.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

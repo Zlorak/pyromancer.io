@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://cds5qxr8j0544"]
+
+[ext_resource type="SpriteFrames" uid="uid://cceq5s8cqodqj" path="res://resources/skeleton/sprite_frames.tres" id="1_2xs44"]
+[ext_resource type="Script" path="res://scenes/monster/monster.gd" id="1_6cwnu"]
+[ext_resource type="Shape2D" uid="uid://bmw3uaoshvago" path="res://resources/skeleton/shape_2d.tres" id="3_fjn6w"]
+[ext_resource type="Resource" uid="uid://c8escid857tie" path="res://resources/skeleton/skeleton.tres" id="3_y0rmp"]
+[ext_resource type="AudioStream" uid="uid://4jht56pilgjx" path="res://resources/skeleton/pain_audio_random.tres" id="4_t4inh"]
+[ext_resource type="AudioStream" uid="uid://gg852a4booi2" path="res://resources/skeleton/attack_audio_random.tres" id="5_5d7ux"]
+[ext_resource type="Shape2D" uid="uid://bnky4csdvtreb" path="res://resources/skeleton/attack_area.tres" id="6_4k1qm"]
+[ext_resource type="Texture2D" uid="uid://cgg3peydpp6b0" path="res://assets/shadow.png" id="8_atwcq"]
+
+[node name="Monster" type="AnimatedSprite2D" node_paths=PackedStringArray("pain_audio", "attack_audio")]
+sprite_frames = ExtResource("1_2xs44")
+animation = &"hurt"
+script = ExtResource("1_6cwnu")
+monster_data = ExtResource("3_y0rmp")
+pain_audio = NodePath("PainAudioStream")
+attack_audio = NodePath("AttackAudioStream")
+
+[node name="PainAudioStream" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_t4inh")
+volume_db = -6.0
+
+[node name="AttackAudioStream" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_5d7ux")
+volume_db = -6.0
+
+[node name="BodyArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyArea"]
+position = Vector2(0, 20)
+shape = ExtResource("3_fjn6w")
+
+[node name="AttackArea" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, 20)
+shape = ExtResource("6_4k1qm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.588235)
+show_behind_parent = true
+position = Vector2(2, 39)
+scale = Vector2(1.5, 1)
+texture = ExtResource("8_atwcq")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="frame_changed" from="." to="." method="_on_frame_changed"]
+[connection signal="area_entered" from="BodyArea" to="." method="_on_body_area_area_entered"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]

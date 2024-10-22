@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpfd30tvcbkwx"]
+
+[ext_resource type="Script" path="res://scenes/level/level_1.gd" id="1_ko2k2"]
+[ext_resource type="PackedScene" uid="uid://bqsvskw1icfiw" path="res://scenes/powers/fire_stone.tscn" id="2_5yrg6"]
+[ext_resource type="PackedScene" uid="uid://3qsm8iiqj5mh" path="res://scenes/player/player.tscn" id="2_ac6y2"]
+[ext_resource type="PackedScene" uid="uid://cds5qxr8j0544" path="res://scenes/monster/monster.tscn" id="2_op18s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3p4l"]
+size = Vector2(2560, 1440)
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_ko2k2")
+monster_scene = ExtResource("2_op18s")
+fire_stone_scene = ExtResource("2_5yrg6")
+map_size_x = 2510
+map_size_y = 1390
+map_margin = null
+player_scene = ExtResource("2_ac6y2")
+player_spawn = Vector2(640, 320)
+
+[node name="FireStoneSpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="MonsterSpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="MapLimit" type="Area2D" parent="."]
+z_index = -1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapLimit"]
+position = Vector2(1280, 720)
+shape = SubResource("RectangleShape2D_c3p4l")
+
+[node name="ColorRect" type="ColorRect" parent="MapLimit"]
+offset_right = 2560.0
+offset_bottom = 1440.0
+size_flags_horizontal = 4
+color = Color(0.0807833, 0.0807833, 0.0807833, 1)
+
+[connection signal="timeout" from="FireStoneSpawnTimer" to="." method="_on_fire_stone_spawn_timer_timeout"]
+[connection signal="timeout" from="MonsterSpawnTimer" to="." method="_on_monster_spawn_timer_timeout"]

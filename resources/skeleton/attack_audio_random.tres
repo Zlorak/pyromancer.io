@@ -1,0 +1,9 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://gg852a4booi2"]
+
+[ext_resource type="AudioStream" uid="uid://78twhtbinkna" path="res://assets/audio/sound_fx/skeleton/attack_01.wav" id="1_hx8cj"]
+[ext_resource type="AudioStream" uid="uid://1t40ar8vfpgc" path="res://assets/audio/sound_fx/skeleton/attack_02.wav" id="2_2hqne"]
+
+[resource]
+streams_count = 2
+stream_0/stream = ExtResource("1_hx8cj")
+stream_1/stream = ExtResource("2_2hqne")

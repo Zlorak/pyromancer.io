@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpv3gtb8881fw"]
+
+[ext_resource type="Script" path="res://scenes/player/monsters_label.gd" id="1_sjf1d"]
+
+[sub_resource type="Animation" id="Animation_ix81x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_x67rj"]
+resource_name = "smooth_alpha"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vhnr0"]
+_data = {
+"RESET": SubResource("Animation_ix81x"),
+"smooth_alpha": SubResource("Animation_x67rj")
+}
+
+[node name="MonstersLabel" type="Label" node_paths=PackedStringArray("animation_player")]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -197.5
+offset_top = -170.0
+offset_right = 197.5
+offset_bottom = -137.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Monsters have grown restless..."
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_sjf1d")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vhnr0")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

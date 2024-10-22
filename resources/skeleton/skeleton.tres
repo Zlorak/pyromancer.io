@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MonsterResource" load_steps=3 format=3 uid="uid://c8escid857tie"]
+
+[ext_resource type="SpriteFrames" uid="uid://cceq5s8cqodqj" path="res://resources/skeleton/sprite_frames.tres" id="1_hv7v1"]
+[ext_resource type="Script" path="res://resources/monster/monster_resource.gd" id="1_lvows"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_lvows")
+speed = 150
+experience = 25
+max_hp_multiplier = 1.0
+max_hp_base = 100
+attack_multiplier = 1.0
+attack_base = 15
+attack_frame = 2
+hurt_frame = 1
+animated_sprites = ExtResource("1_hv7v1")
+collision_offset = Vector2(0, 20)
